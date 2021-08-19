@@ -1,9 +1,9 @@
-import consola, { Consola } from "consola";
+import consola, { Consola } from 'consola';
 
-import { Client, Intents, Collection } from "discord.js";
-import { promisify } from "util";
-import glob from "glob";
-import { ICommand, IConfig, IEvent } from "./types";
+import { Client, Intents, Collection } from 'discord.js';
+import { promisify } from 'util';
+import glob from 'glob';
+import { ICommand, IConfig, IEvent } from './types';
 
 const promisedGlob = promisify(glob);
 
@@ -27,12 +27,12 @@ export class Bot extends Client {
   public async start(config: IConfig) {
     this.config = config;
 
-    const commandsFiles = await this.getFiles("commands");
+    const commandsFiles = await this.getFiles('commands');
     commandsFiles.forEach(async (val: string) => {
       const file: ICommand = await import(val);
       this.commands.set(file.name, file);
     });
-    const eventsFiles = await this.getFiles("events");
+    const eventsFiles = await this.getFiles('events');
 
     eventsFiles.forEach(async (val: string) => {
       const file: IEvent = await import(val);
@@ -47,7 +47,7 @@ export class Bot extends Client {
   private async clientLogin(): Promise<boolean> {
     try {
       await super.login(this.config.token);
-      this.logger.success("bot connected successfully");
+      this.logger.success('bot connected successfully');
       return true;
     } catch ({ message }) {
       this.logger.error(message);

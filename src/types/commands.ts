@@ -1,5 +1,5 @@
-import { Message } from "discord.js";
-import { Bot } from "../client";
+import { Message } from 'discord.js';
+import { Bot } from '../client';
 
 export interface ICommandFunction {
   (client: Bot, message: Message, arg: string[]): Promise<void>;

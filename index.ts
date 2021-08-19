@@ -1,6 +1,6 @@
-import { Bot } from "./src";
+import { Bot } from './src';
 
-require("dotenv").config();
+require('dotenv').config();
 
 const main = async () => {
   const bot = new Bot();

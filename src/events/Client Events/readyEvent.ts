@@ -1,7 +1,7 @@
-import { IEventFunction } from '../../types';
+import { IEventFunction } from '../../types'
 
 export const run: IEventFunction = async (client) => {
-  client.logger.success('bot is ready 🔥🤖');
-};
+  client.logger.success('bot is ready 🔥🤖')
+}
 
-export const name: string = 'ready';
+export const name: string = 'ready'

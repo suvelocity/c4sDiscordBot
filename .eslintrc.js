@@ -3,11 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: [
-    'airbnb-base',
-    'prettier',
-    'plugin:@typescript-eslint/eslint-recommended',
-  ],
+  extends: ['airbnb-base', 'prettier', 'plugin:@typescript-eslint/eslint-recommended'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 12,
@@ -26,8 +22,15 @@ module.exports = {
     'prefer-template': 2,
     '@typescript-eslint/no-unused-vars': ['error'],
     '@typescript-eslint/no-var-requires': 0,
-    'prettier/prettier': 'error',
     'no-useless-return': 0,
     'no-shadow': 0,
+    'prettier/prettier': [
+      'error',
+      {
+        singleQuote: true,
+        semi: false,
+        printWidth: 120,
+      },
+    ],
   },
-};
+}

@@ -1,10 +1,10 @@
-import { Bot } from './src';
+import { Bot } from './src'
 
-require('dotenv').config();
+require('dotenv').config()
 
 const main = async () => {
-  const bot = new Bot();
-  bot.start({ token: process.env.BOT_TOKEN! });
-};
+  const bot = new Bot()
+  bot.start({ token: process.env.BOT_TOKEN! })
+}
 
-main();
+main()

@@ -1,6 +1,6 @@
 import consola, { Consola } from 'consola'
 
-import { Client, Intents, Collection } from 'discord.js'
+import { Client, Intents, Collection, MessageEmbed, MessageEmbedOptions, Message } from 'discord.js'
 import { promisify } from 'util'
 import glob from 'glob'
 import { ICommand, IConfig, IEvent } from './types'
@@ -37,7 +37,7 @@ export class Bot extends Client {
     eventsFiles.forEach(async (val: string) => {
       const file: IEvent = await import(val)
       this.events.set(file.name, file)
-      this.on(file.name, file.run.bind(this))
+      this.on(file.name, file.run.bind(null, this))
     })
 
     const isConnectedSuccessfully = await this.clientLogin()
@@ -62,6 +62,17 @@ export class Bot extends Client {
     } catch (e) {
       this.logger.error(`${type} files not found`)
       return []
+    }
+  }
+
+  public embed(options: MessageEmbedOptions, message: Message) {
+    return {
+      embeds: [
+        new MessageEmbed({ ...options, color: 'RANDOM' }).setFooter(
+          `${message.author.tag}  | ${this.user?.username}`,
+          message.author.displayAvatarURL({ format: 'png', dynamic: true })
+        ),
+      ],
     }
   }
 }

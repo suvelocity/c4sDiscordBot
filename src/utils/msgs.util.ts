@@ -12,3 +12,5 @@ export const getCommandArgs = ({ content }: Message) => {
     args,
   }
 }
+
+export const isAdmin = (msg: Message) => msg.member?.permissions.has('ADMINISTRATOR')

@@ -1,12 +1,12 @@
 import { MessageEmbed } from 'discord.js'
 import { ICommandFunction, IPollOptions, PollFlags } from '../../types'
-import { defEmojiList, isAdmin } from '../../utils'
+import { defEmojiList } from '../../utils'
 
 export const run: ICommandFunction = async (client, message, args) => {
-  if (!isAdmin(message)) {
-    message.reply('Not authorized')
-    return
-  }
+  // if (!isAdmin(message)) {
+  //   message.reply('Not authorized')
+  //   return
+  // }
 
   if (!args.length) {
     message.reply('Please specify question')
@@ -112,4 +112,4 @@ export const run: ICommandFunction = async (client, message, args) => {
 
 export const name = 'poll'
 export const description =
-  'create a poll in the chat, administrator permission required, usage: !poll <question> T=<timeout> O=<options? separated by commas>'
+  'create a poll in the chat, usage: !poll <question> T=<timeout (optional)> O=<options (optional) separated by commas>'

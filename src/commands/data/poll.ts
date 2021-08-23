@@ -3,7 +3,7 @@ import { ICommandFunction, IPollOptions, PollFlags } from '../../types'
 import { defEmojiList } from '../../utils'
 
 export const run: ICommandFunction = async (client, message, args) => {
-  // if (!isAdmin(message)) {
+  // if (!isAdmin(message)) { //TODO uncomment is admin restriction needed
   //   message.reply('Not authorized')
   //   return
   // }
@@ -64,7 +64,7 @@ export const run: ICommandFunction = async (client, message, args) => {
       if (!reaction.emoji.name || user.bot) return false
       return defEmojiList.slice(0, optsKeys.length).includes(reaction.emoji.name)
     },
-    time: opts.timeout === 0 ? undefined : opts.timeout! * 1000,
+    time: !opts.timeout ? undefined : opts.timeout * 1000,
   })
 
   Object.keys(opts.options!).forEach((emoji) => poll.react(defEmojiList[+emoji]))

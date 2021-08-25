@@ -1,3 +1,4 @@
+import http from 'http'
 import { Bot } from './src'
 
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -22,3 +23,8 @@ const keepAwake = () => {
 setInterval(keepAwake, 1000 * 60 * 15)
 
 main()
+const server = http.createServer((req, res) => {
+  res.end('hello', 'utf-8')
+})
+
+server.listen(process.env.PORT || 8080)

@@ -11,6 +11,9 @@
     "lint": "eslint . --ext .js,.ts --fix",
     "commit": "npx cz"
   },
+  "engines": {
+    "node": "16.7.x"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

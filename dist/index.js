@@ -8,7 +8,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+const http_1 = __importDefault(require("http"));
 const src_1 = require("./src");
 // eslint-disable-next-line import/no-extraneous-dependencies
 global.fetch = require('node-fetch');
@@ -28,3 +32,7 @@ const keepAwake = () => {
 };
 setInterval(keepAwake, 1000 * 60 * 15);
 main();
+const server = http_1.default.createServer((req, res) => {
+    res.end('hello', 'utf-8');
+});
+server.listen(process.env.PORT || 8080);
